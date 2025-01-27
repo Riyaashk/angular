@@ -310,23 +310,30 @@ helmets = [
   ];
 page: string = 'helmet';  
 searchText: string = '';
+isNoDataFound = false;
 mainMenuItems: string[] = ['Home', 'Products', 'New Arrival', 'Contact']
 
 
 
 filteredProductShoe = this.shoes;
 filteredProductHelmet = this.helmets;
-
+onPageChange(newPage: string) {
+  this.searchText = '';  // Clear the search text when switching pages
+  this.onSearchTextChange();
+}
 onSearchTextChange() {
   if(this.page == 'shoe' ) {
   this.filteredProductShoe = this.shoes.filter(product =>
     product.name.toLowerCase().includes(this.searchText.toLowerCase())
   );
+  this.isNoDataFound = this.filteredProductShoe.length === 0;
 } else{
+  if(this.page == 'helmet' ) {
   this.filteredProductHelmet = this.helmets.filter(product =>
     product.name.toLowerCase().includes(this.searchText.toLowerCase())
   );
-
+  this.isNoDataFound = this.filteredProductHelmet.length === 0;
+}
 }
 }
 redirectToWhatsApp(productName: string, productImage: string): void {
