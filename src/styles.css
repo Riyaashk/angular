@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import Url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
+/* *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Montserrat", sans-serif;
+}
+
+a{
+    text-decoration: none; 
+    margin: 0px 10px;
+} */
+
+/* Base styles (for large screens like laptops and desktops) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Styles for screens larger than 1200px (Large desktops/laptops) */
+@media (min-width: 1200px) {
+  body {
+    font-size: 18px;
+  }
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Styles for tablets (between 768px and 1199px, iPads and Android Tablets) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Styles for mobile devices (phones, iPhone, Android) */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    width: 100%;
+    margin: 0 10px;
+  }
+}
+
+/* Styles for very small screens (e.g., smaller smartphones) */
+@media (max-width: 375px) {
+  body {
+    font-size: 12px;
+  }
+  .container {
+    width: 100%;
+    margin: 0 5px;
+  }
+}
