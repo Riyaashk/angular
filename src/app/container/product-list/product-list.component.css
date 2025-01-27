@@ -256,6 +256,7 @@ a{
     width: 100%;
     font-size: 0.9rem;
     position: fixed;
+    margin-top: 15px;
   }
   .footer {
     background-color: #e0e0e0;
@@ -265,9 +266,32 @@ a{
     bottom: 0px;
     width: 100%;
     font-size: 0.9rem;
+    margin-top: 15px;
+
   }
   
   .footer p {
     margin: 0;
+  }
+  
+  .buy-button {
+    background-color: #ff5722; /* Your desired color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .buy-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .buy-message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
   }
   
