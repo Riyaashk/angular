@@ -87,8 +87,9 @@
     float: right;
     font-size: 14px;
     margin-top: 10px;
-    margin-right: -10px;
-    padding: 5px 10px;
+    width: 25%;
+    /* margin-right: -10px; */
+    padding: 5px 5px;
     background-color: #FFC000;
     color: #282828;
     font-weight: bold;
@@ -196,9 +197,22 @@
     font-weight: bold;
     color: #36454F;
     font-family: 'Concert One', cursive;
-    width:20%;
+   
 }
+.nav-item:hover  {
+    background-color:#bdcad3; /* Changes background to Bootstrap's primary color */
+    border-radius: 5px;
+    color: black; 
+    padding: 5px;      /* Keep border-radius on active link */
+                 /* White text when active */
 
+  }
+  .nav-item .nav-link.active {
+    background-color: #bdcad3; /* Blue background for active link */
+    color: black;     
+    border-radius: 5px;  
+    padding: 5px;      /* Keep border-radius on active link */
+  }
 .ekart--header--nav{
    padding: 20px 20px;
     width:80%;
@@ -254,7 +268,7 @@ a{
     color: white;
 }
 .footer-em {
-    background-color: #e0e0e0;
+    /* background-color: #e0e0e0; */
     color: black;
     text-align: center;
     padding: 5px 0;
@@ -265,7 +279,7 @@ a{
     margin-top: 15px;
   }
   .footer {
-    background-color: #e0e0e0;
+    /* background-color: #e0e0e0; */
     color: black;
     text-align: center;
     padding: 5px 0;

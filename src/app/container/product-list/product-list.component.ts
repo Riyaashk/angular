@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-
+import { Component, Input, ViewChild } from '@angular/core';
+import { Offcanvas } from 'bootstrap';
 @Component({
   selector: 'product-list',
 
@@ -7,6 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
+  @ViewChild('offcanvasNavbar') offcanvasNavbar: any; // Reference to offcanvas element
+  private offcanvas: Offcanvas;
+  ngOnInit(){
+    if(this.page == 'helmet'){
+
+    }
+  }
+  ngAfterViewInit() {
+    // Initialize Bootstrap offcanvas
+    this.offcanvas = new Offcanvas(this.offcanvasNavbar.nativeElement);
+  }
 shoes = [
 {
   id:1,
@@ -317,9 +328,28 @@ mainMenuItems: string[] = ['Home', 'Products', 'New Arrival', 'Contact']
 
 filteredProductShoe = this.shoes;
 filteredProductHelmet = this.helmets;
-onPageChange(newPage: string) {
-  this.searchText = '';  // Clear the search text when switching pages
-  this.onSearchTextChange();
+
+scrollToTop() {
+  window.scrollTo(0, 0);
+}
+onPageChange(page) {
+  if(page == 'helmet'){
+  this.page = 'helmet';
+  this.scrollToTop();
+
+  }
+  if(page == 'shoe'){
+    this.page = 'shoe';
+    this.scrollToTop();
+    }
+    if (this.offcanvas) {
+      this.offcanvas.hide();
+    }
+    const backdrop = document.querySelector('.offcanvas-backdrop') as HTMLElement;
+    if (backdrop) {
+      backdrop.classList.remove('show'); // This removes the backdrop
+      backdrop.style.display = 'none';   // Optionally hide it (if the above doesn't work)
+    }
 }
 onSearchTextChange() {
   if(this.page == 'shoe' ) {
