@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 <nav class="navbar navbar-expand-md fixed-top" style="background-color: #e3f2fd;">
  
    <div class="ekart-logo">
@@ -16,8 +16,8 @@
      >
        <span class="navbar-toggler-icon"></span>
      </button>
+     <!-- #offcanvasNavbar -->
      <div
-     #offcanvasNavbar
        class="offcanvas offcanvas-end"
        tabindex="-1"
        id="offcanvasNavbar"
@@ -177,8 +177,8 @@
         
 </div>
          </div>
-         <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}">
-            <p>&copy; 2025 Riyaash. All rights reserved.</p>
-          </div>
+     
       </div>
-    
+      <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}">
+        <p>&copy; 2025 Riyaash. All rights reserved.</p>
+      </div>

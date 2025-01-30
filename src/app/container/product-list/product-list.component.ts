@@ -7,17 +7,16 @@ import { Offcanvas } from 'bootstrap';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  @ViewChild('offcanvasNavbar') offcanvasNavbar: any; // Reference to offcanvas element
-  private offcanvas: Offcanvas;
+  // @ViewChild('offcanvasNavbar') offcanvasNavbar: any; 
+  // private offcanvas: Offcanvas;
   ngOnInit(){
     if(this.page == 'helmet'){
 
     }
   }
-  ngAfterViewInit() {
-    // Initialize Bootstrap offcanvas
-    this.offcanvas = new Offcanvas(this.offcanvasNavbar.nativeElement);
-  }
+  // ngAfterViewInit() {
+  //   this.offcanvas = new Offcanvas(this.offcanvasNavbar.nativeElement);
+  // }
 shoes = [
 {
   id:1,
@@ -342,9 +341,9 @@ onPageChange(page) {
     this.page = 'shoe';
     this.scrollToTop();
     }
-    if (this.offcanvas) {
-      this.offcanvas.hide();
-    }
+    // if (this.offcanvas) {
+    //   this.offcanvas.hide();
+    // }
     const backdrop = document.querySelector('.offcanvas-backdrop') as HTMLElement;
     if (backdrop) {
       backdrop.classList.remove('show'); // This removes the backdrop
