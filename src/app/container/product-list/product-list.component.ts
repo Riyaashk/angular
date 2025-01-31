@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import * as bootstrap from 'bootstrap';
+import $ from 'jquery';
+
+
 
 @Component({
   selector: 'product-list',
@@ -359,6 +363,13 @@ scrollToTop() {
 //   }
 // }
 
+closeOffcanvas() {
+  // Trigger the click event on the close button manually using jQuery
+  $('#offcanvasNavbar .btn-close').click();
+}
+
+  
+
 onPageChange(page) {
   if(page == 'helmet'){
   this.page = 'helmet';
@@ -370,7 +381,7 @@ onPageChange(page) {
  this.selectedBrandShoe='nike'; 
     this.scrollToTop();
     }
-//  this.closeOffcanvas();
+ this.closeOffcanvas();
  
 }
 onSearchTextChange() {
