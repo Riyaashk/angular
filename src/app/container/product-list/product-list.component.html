@@ -125,7 +125,7 @@
 -->
    <div *ngIf="page == 'shoe'">
    <div class="container-fluid" style="margin-top: 80px;">
-      <div class="row">
+      <div class="row p-4">
         <!-- Card 1 -->
         <div class="col-md-4 mt-4" *ngFor="let product of filteredProductShoe" >
           <div class="card" style="width: 100%; height:100%;">
@@ -155,8 +155,8 @@
    
       <div *ngIf="page == 'helmet'">
 
-         <div class="container-fluid" style="margin-top: 100px;">
-            <div class="row">
+         <div class="container-fluid" style="margin-top: 80px;">
+            <div class="row p-4">
               <div class="col-md-4 mt-4" *ngFor="let product of filteredProductHelmet" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
