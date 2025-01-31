@@ -30,7 +30,7 @@ selectedBrandShoe :  string = 'nike';
 searchText: string = '';
 isNoDataFound = false;
 mainMenuItems: string[] = ['Home', 'Products', 'New Arrival', 'Contact']
-
+isLoading: boolean = false;
 
 
 filteredProductShoe = this.shoes;
@@ -392,6 +392,9 @@ onSearchTextChange() {
 onHelmetSelect(event: any) {
   const selectedValue = event.target.value;
   console.log(selectedValue); // This will log "axor" when the user selects "Axor"
+  this.isLoading = true;
+  setTimeout(() => {
+    this.isLoading = false;
   if(selectedValue == 'axor'){
     this.selectedBrandHelmet = 'axor';
   }
@@ -413,6 +416,7 @@ onHelmetSelect(event: any) {
   if(selectedValue == 'adidas'){
     this.selectedBrandShoe = 'adidas';
   }
+}, 1000);
 }
 
 redirectToWhatsApp(productName: string, productImage: string): void {

@@ -80,6 +80,7 @@
    
       <div *ngIf="page == 'helmet'">
         <div class="container-fluid" style="margin-top: 100px;">
+          <div *ngIf="!isLoading">
             <div class="row p-4">
               <ng-container *ngIf="selectedBrandHelmet == 'axor'">
               <div class="col-md-3 mt-4" *ngFor="let axor of axorHelmets" >
@@ -174,10 +175,13 @@
             </ng-container>
             </div>
           </div>
+          </div>
          <!-- <div *ngIf="!filteredProductHelmet.length" class="no-data">
             Oops! No products found. Try searching for something else
          </div> -->
-        
+        <!-- Loader -->
+
+
         
 </div>
 
@@ -208,6 +212,7 @@
 <div id="shoe" *ngIf="page == 'shoe'">
   
   <div class="container-fluid" style="margin-top: 100px;">
+    <div *ngIf="!isLoading">
      <div class="row p-4">
        <!-- Card 1 -->
        <ng-container *ngIf="selectedBrandShoe == 'nike'">
@@ -254,11 +259,14 @@
         </div>
         </ng-container>
      </div>
+     </div>
    </div>
   <!-- <div *ngIf="!filteredProductShoe.length" class="no-data">
      Oops! No products found. Try searching for something else
   </div> -->
   </div>
+
+
          </div>
      
          <div class="footer">
@@ -266,3 +274,8 @@
             <p>&copy; 2025 Riyaash. All rights reserved.</p>
           </div>
     <!-- </div> -->
+       <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center vh-100">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
