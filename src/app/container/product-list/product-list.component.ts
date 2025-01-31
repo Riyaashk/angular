@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Offcanvas } from 'bootstrap';
+declare var bootstrap: any; 
 @Component({
   selector: 'product-list',
 
@@ -331,24 +332,25 @@ filteredProductHelmet = this.helmets;
 scrollToTop() {
   window.scrollTo(0, 0);
 }
+// close() {
+//   const offcanvasElement = document.getElementById('offcanvasNavbar');
+//   if (offcanvasElement) {
+//     const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+//   offcanvas.hide();
+//   }
+// }
 onPageChange(page) {
   if(page == 'helmet'){
   this.page = 'helmet';
   this.scrollToTop();
-
   }
   if(page == 'shoe'){
     this.page = 'shoe';
     this.scrollToTop();
+
     }
-    // if (this.offcanvas) {
-    //   this.offcanvas.hide();
-    // }
-    const backdrop = document.querySelector('.offcanvas-backdrop') as HTMLElement;
-    if (backdrop) {
-      backdrop.classList.remove('show'); // This removes the backdrop
-      backdrop.style.display = 'none';   // Optionally hide it (if the above doesn't work)
-    }
+
+ 
 }
 onSearchTextChange() {
   if(this.page == 'shoe' ) {

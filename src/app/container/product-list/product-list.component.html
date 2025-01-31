@@ -43,7 +43,7 @@
              <a class="nav-link " aria-current="page" href="#">Home</a>
            </li> -->
            <li class="nav-item">
-            <a class="nav-link "(click)="onPageChange('helmet')"  [class.active]="page === 'helmet'">Helmets</a>
+            <a class="nav-link " (click)="onPageChange('helmet')"  [class.active]="page === 'helmet'">Helmets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="onPageChange('shoe')" [class.active]="page === 'shoe'">Shoes</a>
@@ -123,7 +123,7 @@
    </div>
 -->
    <div *ngIf="page == 'shoe'">
-   <div class="container" style="margin-top: 100px;">
+   <div class="container-fluid" style="margin-top: 100px;">
       <div class="row">
         <!-- Card 1 -->
         <div class="col-md-4 mt-4 " *ngFor="let product of filteredProductShoe" >
@@ -132,9 +132,13 @@
             <span class="ekart-on-sale-tag" *ngIf="product.discountPrice">{{(100- (product.discountPrice / product.price * 100)).toFixed(0)}}% OFF</span>
 
             <div class="card-body">
+              <div class="ekart--add--to--price">
+                ₹ {{product.price}}
+            </div>
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text">{{product.gender}} . {{product.category}} . {{product.brand}} </p>
        <h3 class="green"> Best seller</h3>
+       <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: product.is_in_inventory ? 'Green' : 'Red'}">{{product.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
           <button [disabled]="!product.is_in_inventory" (click)="redirectToWhatsApp(product.name, product.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
 
             </div>
@@ -156,14 +160,19 @@
               <div class="col-md-4 mt-4 " *ngFor="let product of filteredProductHelmet" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+                 
                   <span class="ekart-on-sale-tag" *ngIf="product.discountPrice">{{(100- (product.discountPrice / product.price * 100)).toFixed(0)}}% OFF</span>
 
                   <div class="card-body">
+                    <div class="ekart--add--to--price">
+                      ₹ {{product.price}}
+                  </div>
                     <h5 class="card-title">{{product.name}}</h5>
                     <p class="card-text">{{product.gender}} . {{product.category}} . {{product.brand}} </p>
              <h3 class="green"> Best seller</h3>
-                <button [disabled]="!product.is_in_inventory" (click)="redirectToWhatsApp(product.name, product.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: product.is_in_inventory ? 'Green' : 'Red'}">{{product.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
 
+                <button [disabled]="!product.is_in_inventory" (click)="redirectToWhatsApp(product.name, product.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
                   </div>
 
                 </div>
@@ -179,6 +188,8 @@
          </div>
      
       </div>
-      <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}">
+      <div class="footer">
+      <!-- <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}"> -->
         <p>&copy; 2025 Riyaash. All rights reserved.</p>
       </div>
+    <!-- </div> -->
