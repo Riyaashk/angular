@@ -7,7 +7,7 @@
    </div>
    
      <button
-       class="navbar-toggler"
+       class="navbar-toggler right"
        type="button"
        data-bs-toggle="offcanvas"
        data-bs-target="#offcanvasNavbar"
@@ -43,10 +43,10 @@
              <a class="nav-link " aria-current="page" href="#">Home</a>
            </li> -->
            <li class="nav-item">
-            <a class="nav-link " (click)="onPageChange('helmet')"  [class.active]="page === 'helmet'">Helmets</a>
+            <a class="nav-link text-s" (click)="onPageChange('helmet')"  [class.active]="page === 'helmet'">Helmets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="onPageChange('shoe')" [class.active]="page === 'shoe'">Shoes</a>
+            <a class="nav-link text-s" (click)="onPageChange('shoe')" [class.active]="page === 'shoe'">Shoes</a>
           </li>
            <!-- <li class="nav-item">
              <a class="nav-link" href="#">SignIn</a>
@@ -87,6 +87,7 @@
        </div>
      </div>
  </nav>
+</div>
 
 <div *ngIf="page == 'shoe' || page == 'helmet'">
 <!--
@@ -123,10 +124,10 @@
    </div>
 -->
    <div *ngIf="page == 'shoe'">
-   <div class="container-fluid" style="margin-top: 100px;">
+   <div class="container-fluid" style="margin-top: 80px;">
       <div class="row">
         <!-- Card 1 -->
-        <div class="col-md-4 mt-4 " *ngFor="let product of filteredProductShoe" >
+        <div class="col-md-4 mt-4" *ngFor="let product of filteredProductShoe" >
           <div class="card" style="width: 100%; height:100%;">
             <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
             <span class="ekart-on-sale-tag" *ngIf="product.discountPrice">{{(100- (product.discountPrice / product.price * 100)).toFixed(0)}}% OFF</span>
@@ -154,10 +155,9 @@
    
       <div *ngIf="page == 'helmet'">
 
-         <div class="container" style="margin-top: 100px;">
+         <div class="container-fluid" style="margin-top: 100px;">
             <div class="row">
-              <!-- Card 1 -->
-              <div class="col-md-4 mt-4 " *ngFor="let product of filteredProductHelmet" >
+              <div class="col-md-4 mt-4" *ngFor="let product of filteredProductHelmet" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
@@ -187,9 +187,8 @@
 </div>
          </div>
      
-      </div>
-      <div class="footer">
-      <!-- <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}"> -->
-        <p>&copy; 2025 Riyaash. All rights reserved.</p>
-      </div>
+         <div class="footer">
+          <!-- <div [ngClass]="{'footer': true, 'footer-em': isNoDataFound}"> -->
+            <p>&copy; 2025 Riyaash. All rights reserved.</p>
+          </div>
     <!-- </div> -->

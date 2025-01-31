@@ -39,10 +39,16 @@
     margin-left: 2px;
     color: #fff;
 }
-.container{
+/* .container{
     display: flex;
     flex-wrap: wrap;
-}
+} */
+ .right{
+    margin-right: 10px;
+ }
+ .text-s{
+    font-size: 20px;
+ }
 .ekart--product--container {
     margin: 1% 10%;
     display: flex;
@@ -188,8 +194,8 @@
     background-color: white;
 }
 
-.left-mg{
-    margin-left: 15px;
+.lft{
+    margin-left: 0px;
 }
 .ekart-logo{
    padding: 10px 10px;
