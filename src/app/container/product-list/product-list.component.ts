@@ -1,6 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { Offcanvas } from 'bootstrap';
-declare var bootstrap: any; 
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'product-list',
 
@@ -8,16 +7,13 @@ declare var bootstrap: any;
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  // @ViewChild('offcanvasNavbar') offcanvasNavbar: any; 
-  // private offcanvas: Offcanvas;
+
   ngOnInit(){
     if(this.page == 'helmet'){
 
     }
   }
-  // ngAfterViewInit() {
-  //   this.offcanvas = new Offcanvas(this.offcanvasNavbar.nativeElement);
-  // }
+
 shoes = [
 {
   id:1,
@@ -332,17 +328,17 @@ filteredProductHelmet = this.helmets;
 scrollToTop() {
   window.scrollTo(0, 0);
 }
-closeOffcanvas(): void {
-  const offcanvasElement = document.getElementById('offcanvasNavbar');
-  const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
-  offcanvasInstance.hide(); // Close the offcanvas
+// closeOffcanvas(): void {
+//   const offcanvasElement = document.getElementById('offcanvasNavbar');
+//   const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+//   offcanvasInstance.hide(); // Close the offcanvas
 
-  // Remove backdrop manually
-  const backdropElement = document.querySelector('.offcanvas-backdrop');
-  if (backdropElement) {
-    backdropElement.remove(); // Removes the backdrop completely
-  }
-}
+//   // Remove backdrop manually
+//   const backdropElement = document.querySelector('.offcanvas-backdrop');
+//   if (backdropElement) {
+//     backdropElement.remove(); // Removes the backdrop completely
+//   }
+// }
 
 onPageChange(page) {
   if(page == 'helmet'){
@@ -353,7 +349,7 @@ onPageChange(page) {
     this.page = 'shoe';
     this.scrollToTop();
     }
- this.closeOffcanvas();
+//  this.closeOffcanvas();
  
 }
 onSearchTextChange() {

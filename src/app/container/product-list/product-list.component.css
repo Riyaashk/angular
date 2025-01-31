@@ -91,10 +91,6 @@
  .ekart-trolley-icon:hover {
     color: #000;
  }
- .container-fluid {
-    max-height: 100vh;
-    overflow-y: auto;
-  }
 .ekart-on-sale-tag {
     float: right;
     font-size: 14px;
