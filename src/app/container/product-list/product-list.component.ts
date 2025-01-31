@@ -332,13 +332,18 @@ filteredProductHelmet = this.helmets;
 scrollToTop() {
   window.scrollTo(0, 0);
 }
-// close() {
-//   const offcanvasElement = document.getElementById('offcanvasNavbar');
-//   if (offcanvasElement) {
-//     const offcanvas = new bootstrap.Offcanvas(offcanvasElement);
-//   offcanvas.hide();
-//   }
-// }
+closeOffcanvas(): void {
+  const offcanvasElement = document.getElementById('offcanvasNavbar');
+  const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+  offcanvasInstance.hide(); // Close the offcanvas
+
+  // Remove backdrop manually
+  const backdropElement = document.querySelector('.offcanvas-backdrop');
+  if (backdropElement) {
+    backdropElement.remove(); // Removes the backdrop completely
+  }
+}
+
 onPageChange(page) {
   if(page == 'helmet'){
   this.page = 'helmet';
@@ -347,9 +352,8 @@ onPageChange(page) {
   if(page == 'shoe'){
     this.page = 'shoe';
     this.scrollToTop();
-
     }
-
+ this.closeOffcanvas();
  
 }
 onSearchTextChange() {
