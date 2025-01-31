@@ -49,102 +49,216 @@
 
 </div>
 
+
+  <div *ngIf="page == 'shoe'" class="dropdownn" (change)="onHelmetSelect($event)">
+    <select class="form-select " aria-label="Default select example" [(ngModel)]="selectedBrandShoe">
+      <!-- <option value = "all">All</option> -->
+      <option value="nike">Nike</option>
+      <option value="adidas">Adidas</option>
+    </select>
+</div>
+
+<div *ngIf="page == 'helmet'" class="dropdownn " (change)="onHelmetSelect($event)">
+  <select class="form-select " aria-label="Default select example" [(ngModel)]="selectedBrandHelmet">
+    <!-- <option value = "all">All</option> -->
+    <option value="axor">Axor</option>
+    <option value="steelBird">Steel Bird</option>
+    <option value="vega">Vega</option>
+    <option value="mt">MT</option>
+  
+
+  </select>
+</div>
+
+
 <div *ngIf="page == 'shoe' || page == 'helmet'">
-<!--
-   <div class="ekart--header" >
-      <div class="ekart-logo">
-         <span>Shopz</span>
-        
-         <i class="fa fa-shopping-cart left-mg"></i>
-      </div>
-   
-      <div class="ekart--header--nav">
+
+
          
-          <div class="ekart--bottom--bar">
-          
-          <div class="bg">
-               <div class="radio-btn">
-                  <label>
-                     <input type="radio" name="page" [(ngModel)]="page" value="helmet" (change)="onPageChange('helmet')"/> Show Helmets
-                  </label>
-                  <label>
-                  <input type="radio" name="page" [(ngModel)]="page" value="shoe" (change)="onPageChange('helmet')" /> Show Shoes
-                  </label>
-            
-               </div>
-               <div class="ekart--search--product">
-                  <input *ngIf="page == 'shoe'" class="ekart--search--product--input" [(ngModel)]="searchText" placeholder="Search Shoes" (ngModelChange)="onSearchTextChange()" >
-                  <input *ngIf="page == 'helmet'" class="ekart--search--product--input" [(ngModel)]="searchText" placeholder="Search Helmets" (ngModelChange)="onSearchTextChange()" >
-               </div>
-               </div>
-        
-          </div>
-      </div>
    
-   </div>
--->
-   <div id="shoe" *ngIf="page == 'shoe'">
-   <div class="container-fluid" style="margin-top: 80px;">
-      <div class="row p-4">
-        <!-- Card 1 -->
-        <div class="col-md-3 mt-4" *ngFor="let product of filteredProductShoe" >
-          <div class="card" style="width: 100%; height:100%;">
-            <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
-            <span class="ekart-on-sale-tag" *ngIf="product.discountPrice">{{(100- (product.discountPrice / product.price * 100)).toFixed(0)}}% OFF</span>
 
-            <div class="card-body">
-              <div class="ekart--add--to--price">
-                ₹ {{product.price}}
-            </div>
-              <h5 class="card-title">{{product.name}}</h5>
-              <p class="card-text">{{product.gender}} . {{product.category}} . {{product.brand}} </p>
-       <h3 class="green"> Best seller</h3>
-       <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: product.is_in_inventory ? 'Green' : 'Red'}">{{product.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
-          <button [disabled]="!product.is_in_inventory" (click)="redirectToWhatsApp(product.name, product.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-   <div *ngIf="!filteredProductShoe.length" class="no-data">
-      Oops! No products found. Try searching for something else
-   </div>
-   </div>
    
       <div *ngIf="page == 'helmet'">
-
-         <div class="container-fluid" style="margin-top: 80px;">
+        <div class="container-fluid" style="margin-top: 100px;">
             <div class="row p-4">
-              <div class="col-md-3 mt-4" *ngFor="let product of filteredProductHelmet" >
+              <ng-container *ngIf="selectedBrandHelmet == 'axor'">
+              <div class="col-md-3 mt-4" *ngFor="let axor of axorHelmets" >
                 <div class="card" style="width: 100; height:100%;">
-                  <img [src] ="product.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+                  <img [src] ="axor.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
-                  <span class="ekart-on-sale-tag" *ngIf="product.discountPrice">{{(100- (product.discountPrice / product.price * 100)).toFixed(0)}}% OFF</span>
+                  <span class="ekart-on-sale-tag" *ngIf="axor.discountPrice">{{(100- (axor.discountPrice / axor.price * 100)).toFixed(0)}}% OFF</span>
 
                   <div class="card-body">
                     <div class="ekart--add--to--price">
-                      ₹ {{product.price}}
+                      ₹ {{axor.price}}
                   </div>
-                    <h5 class="card-title">{{product.name}}</h5>
-                    <p class="card-text">{{product.gender}} . {{product.category}} . {{product.brand}} </p>
+                    <h5 class="card-title">{{axor.name}}</h5>
+                    <p class="card-text">{{axor.gender}} . {{axor.category}} . {{axor.brand}} </p>
              <h3 class="green"> Best seller</h3>
-             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: product.is_in_inventory ? 'Green' : 'Red'}">{{product.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: axor.is_in_inventory ? 'Green' : 'Red'}">{{axor.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
 
-                <button [disabled]="!product.is_in_inventory" (click)="redirectToWhatsApp(product.name, product.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+                <button [disabled]="!axor.is_in_inventory" (click)="redirectToWhatsApp(axor.name, axor.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
                   </div>
 
                 </div>
               </div>
+            </ng-container>
+
+            <ng-container *ngIf="selectedBrandHelmet == 'steelBird'">
+              <div class="col-md-3 mt-4" *ngFor="let steel of steelBirdHelmets" >
+                <div class="card" style="width: 100; height:100%;">
+                  <img [src] ="steel.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+                 
+                  <span class="ekart-on-sale-tag" *ngIf="steel.discountPrice">{{(100- (steel.discountPrice / steel.price * 100)).toFixed(0)}}% OFF</span>
+
+                  <div class="card-body">
+                    <div class="ekart--add--to--price">
+                      ₹ {{steel.price}}
+                  </div>
+                    <h5 class="card-title">{{steel.name}}</h5>
+                    <p class="card-text">{{steel.gender}} . {{steel.category}} . {{steel.brand}} </p>
+             <h3 class="green"> Best seller</h3>
+             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: steel.is_in_inventory ? 'Green' : 'Red'}">{{steel.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+
+                <button [disabled]="!steel.is_in_inventory" (click)="redirectToWhatsApp(steel.name, steel.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+                  </div>
+
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="selectedBrandHelmet == 'vega'">
+              <div class="col-md-3 mt-4" *ngFor="let vega of vegaHelmets" >
+                <div class="card" style="width: 100; height:100%;">
+                  <img [src] ="vega.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+                 
+                  <span class="ekart-on-sale-tag" *ngIf="vega.discountPrice">{{(100- (vega.discountPrice / vega.price * 100)).toFixed(0)}}% OFF</span>
+
+                  <div class="card-body">
+                    <div class="ekart--add--to--price">
+                      ₹ {{vega.price}}
+                  </div>
+                    <h5 class="card-title">{{vega.name}}</h5>
+                    <p class="card-text">{{vega.gender}} . {{vega.category}} . {{vega.brand}} </p>
+             <h3 class="green"> Best seller</h3>
+             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: vega.is_in_inventory ? 'Green' : 'Red'}">{{vega.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+
+                <button [disabled]="!vega.is_in_inventory" (click)="redirectToWhatsApp(vega.name, vega.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+                  </div>
+
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="selectedBrandHelmet == 'mt'">
+              <div class="col-md-3 mt-4" *ngFor="let mt of mtHelmets" >
+                <div class="card" style="width: 100; height:100%;">
+                  <img [src] ="mt.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+                 
+                  <span class="ekart-on-sale-tag" *ngIf="mt.discountPrice">{{(100- (mt.discountPrice / mt.price * 100)).toFixed(0)}}% OFF</span>
+
+                  <div class="card-body">
+                    <div class="ekart--add--to--price">
+                      ₹ {{mt.price}}
+                  </div>
+                    <h5 class="card-title">{{mt.name}}</h5>
+                    <p class="card-text">{{mt.gender}} . {{mt.category}} . {{mt.brand}} </p>
+             <h3 class="green"> Best seller</h3>
+             <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: mt.is_in_inventory ? 'Green' : 'Red'}">{{mt.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+
+                <button [disabled]="!mt.is_in_inventory" (click)="redirectToWhatsApp(mt.name, mt.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+                  </div>
+
+                </div>
+              </div>
+            </ng-container>
             </div>
           </div>
-         <div *ngIf="!filteredProductHelmet.length" class="no-data">
+         <!-- <div *ngIf="!filteredProductHelmet.length" class="no-data">
             Oops! No products found. Try searching for something else
-         </div>
+         </div> -->
         
         
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="shoe" *ngIf="page == 'shoe'">
+  
+  <div class="container-fluid" style="margin-top: 100px;">
+     <div class="row p-4">
+       <!-- Card 1 -->
+       <ng-container *ngIf="selectedBrandShoe == 'nike'">
+       <div class="col-md-3 mt-4" *ngFor="let nike of nikeShoes" >
+         <div class="card" style="width: 100%; height:100%;">
+           <img [src] ="nike.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+           <span class="ekart-on-sale-tag" *ngIf="nike.discountPrice">{{(100- (nike.discountPrice / nike.price * 100)).toFixed(0)}}% OFF</span>
+
+           <div class="card-body">
+             <div class="ekart--add--to--price">
+               ₹ {{nike.price}}
+           </div>
+             <h5 class="card-title">{{nike.name}}</h5>
+             <p class="card-text">{{nike.gender}} . {{nike.category}} . {{nike.brand}} </p>
+      <h3 class="green"> Best seller</h3>
+      <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: nike.is_in_inventory ? 'Green' : 'Red'}">{{nike.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+         <button [disabled]="!nike.is_in_inventory" (click)="redirectToWhatsApp(nike.name, nike.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+
+           </div>
+
+         </div>
+       </div>
+       </ng-container>
+
+       <ng-container *ngIf="selectedBrandShoe == 'adidas'">
+        <div class="col-md-3 mt-4" *ngFor="let adidas of adidasShoes" >
+          <div class="card" style="width: 100%; height:100%;">
+            <img [src] ="adidas.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
+            <span class="ekart-on-sale-tag" *ngIf="adidas.discountPrice">{{(100- (adidas.discountPrice / adidas.price * 100)).toFixed(0)}}% OFF</span>
+ 
+            <div class="card-body">
+              <div class="ekart--add--to--price">
+                ₹ {{adidas.price}}
+            </div>
+              <h5 class="card-title">{{adidas.name}}</h5>
+              <p class="card-text">{{adidas.gender}} . {{adidas.category}} . {{adidas.brand}} </p>
+       <h3 class="green"> Best seller</h3>
+       <div class="ekart--product--in--stock" [ngStyle]="{fontWeight:'bold', color: adidas.is_in_inventory ? 'Green' : 'Red'}">{{adidas.is_in_inventory ? "Available in Stock" : "Not Available in Stock"}}</div>
+          <button [disabled]="!adidas.is_in_inventory" (click)="redirectToWhatsApp(adidas.name, adidas.imgURL)" class="buy-button btn">  <i class="fa fa-shopping-cart"></i> Buy</button>
+ 
+            </div>
+ 
+          </div>
+        </div>
+        </ng-container>
+     </div>
+   </div>
+  <div *ngIf="!filteredProductShoe.length" class="no-data">
+     Oops! No products found. Try searching for something else
+  </div>
+  </div>
          </div>
      
          <div class="footer">
