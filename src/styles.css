@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import Url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css);
+html, body {
+  touch-action: manipulation; /* Prevent pinch zoom */
+  overflow-x: hidden; /* Avoid horizontal scroll */
+}
+
 /* *{
     margin: 0px;
     padding: 0px;
@@ -23,6 +28,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  
 }
 
 /* Styles for screens larger than 1200px (Large desktops/laptops) */
