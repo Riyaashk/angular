@@ -19,10 +19,18 @@ export class ProductListComponent {
     }
   }
 
+  ngAfterViewInit(): void {
+    // Set interval for automatic carousel sliding
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 2000); // 2000ms = 2 seconds
+  }
+
 shoes = [
 
 
 ];
+intervalId: any; 
 
 helmets = [
  
@@ -383,6 +391,15 @@ onPageChange(page) {
     }
  this.closeOffcanvas();
  
+}
+nextSlide(): void {
+  const carouselElement = document.querySelector('#carouselExampleIndicators') as HTMLElement;
+  if (carouselElement) {
+    const nextButton = carouselElement.querySelector('.carousel-control-next') as HTMLElement;
+    if (nextButton) {
+      nextButton.click(); // Simulate a button click to move to the next slide
+    }
+  }
 }
 onSearchTextChange() {
   if(this.page == 'shoe' ) {
