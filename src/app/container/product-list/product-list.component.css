@@ -136,6 +136,7 @@ right: 10px;
     margin-top: 7px;
 }
 .sliderimg{
+    top:50px;
     height: 350px; /* Adjust this height as per your need */
     width: 100%;
     object-fit: contain; /* Ensures the full image is visible without cropping */
