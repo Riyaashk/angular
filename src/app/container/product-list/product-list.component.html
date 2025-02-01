@@ -60,10 +60,10 @@
         <div class="container-fluid" style="margin-top: 100px;">
           <div class="search-container">
             <input type="text" class="form-control search-input" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearchChange()">
+            <button *ngIf="searchQuery" class="clear-btn" (click)="clearSearch()">✖</button>
           </div>
-          <div *ngIf="page == 'helmet'" class="dropdownn " (change)="onHelmetSelect($event)">
+          <!-- <div *ngIf="page == 'helmet'" class="dropdownn " (change)="onHelmetSelect($event)">
             <select class="form-select " aria-label="Default select example" [(ngModel)]="selectedBrandHelmet">
-              <!-- <option value = "all">All</option> -->
               <option value="axor">Axor</option>
               <option value="steelBird">Steel Bird</option>
               <option value="vega">Vega</option>
@@ -71,7 +71,7 @@
             
           
             </select>
-          </div>
+          </div> -->
           <div class=" slidercontainer">
             <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"> -->
               <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
@@ -106,7 +106,7 @@
           <div *ngIf="!isLoading">
             <div class="row p-4">
               <ng-container *ngIf="selectedBrandHelmet == 'axor'">
-              <div class="col-md-3 mt-4" *ngFor="let axor of axorfilteredHelmets" >
+              <div class="col-md-3 mt-4" *ngFor="let axor of filteredHelmets" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="axor.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
@@ -129,7 +129,7 @@
             </ng-container>
 
             <ng-container *ngIf="selectedBrandHelmet == 'steelBird'">
-              <div class="col-md-3 mt-4" *ngFor="let steel of steelfilteredHelmets" >
+              <div class="col-md-3 mt-4" *ngFor="let steel of filteredHelmets" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="steel.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
@@ -152,7 +152,7 @@
             </ng-container>
 
             <ng-container *ngIf="selectedBrandHelmet == 'vega'">
-              <div class="col-md-3 mt-4" *ngFor="let vega of vegafilteredHelmets" >
+              <div class="col-md-3 mt-4" *ngFor="let vega of filteredHelmets" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="vega.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
@@ -175,7 +175,7 @@
             </ng-container>
 
             <ng-container *ngIf="selectedBrandHelmet == 'mt'">
-              <div class="col-md-3 mt-4" *ngFor="let mt of mtfilteredHelmets" >
+              <div class="col-md-3 mt-4" *ngFor="let mt of filteredHelmets" >
                 <div class="card" style="width: 100; height:100%;">
                   <img [src] ="mt.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
                  
@@ -241,14 +241,14 @@
   <div class="container-fluid" style="margin-top: 100px;">
     <div class="search-container">
       <input type="text" class="form-control search-input" placeholder="Search..." [(ngModel)]="searchQuery" (input)="onSearchChange()">
+      <button *ngIf="searchQuery" class="clear-btn" (click)="clearSearch()">✖</button>
     </div>
-    <div *ngIf="page == 'shoe'" class="dropdownn" (change)="onHelmetSelect($event)">
+    <!-- <div *ngIf="page == 'shoe'" class="dropdownn" (change)="onHelmetSelect($event)">
       <select class="form-select " aria-label="Default select example" [(ngModel)]="selectedBrandShoe">
-        <!-- <option value = "all">All</option> -->
         <option value="nike">Nike</option>
         <option value="adidas">Adidas</option>
       </select>
-  </div>
+  </div> -->
   
   
 
@@ -287,7 +287,7 @@
      <div class="row p-4">
        <!-- Card 1 -->
        <ng-container *ngIf="selectedBrandShoe == 'nike'">
-       <div class="col-md-3 mt-4" *ngFor="let nike of nikefilteredShoes" >
+       <div class="col-md-3 mt-4" *ngFor="let nike of filteredShoes" >
          <div class="card" style="width: 100%; height:100%;">
            <img [src] ="nike.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
            <span class="ekart-on-sale-tag" *ngIf="nike.discountPrice">{{(100- (nike.discountPrice / nike.price * 100)).toFixed(0)}}% OFF</span>
@@ -309,7 +309,7 @@
        </ng-container>
 
        <ng-container *ngIf="selectedBrandShoe == 'adidas'">
-        <div class="col-md-3 mt-4" *ngFor="let adidas of adidasfilteredShoes" >
+        <div class="col-md-3 mt-4" *ngFor="let adidas of filteredShoes" >
           <div class="card" style="width: 100%; height:100%;">
             <img [src] ="adidas.imgURL" class= "ekart--product--image" style="width: 100%; height: 100%;">
             <span class="ekart-on-sale-tag" *ngIf="adidas.discountPrice">{{(100- (adidas.discountPrice / adidas.price * 100)).toFixed(0)}}% OFF</span>
