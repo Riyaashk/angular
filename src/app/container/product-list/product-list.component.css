@@ -104,9 +104,9 @@
 }
 .dropdownn{
     width:auto;
- /* margin-top: 5px; */
+ margin-top: 5px;
  position: fixed;
- z-index: 1;
+ z-index: 1050;
 right: 10px;
 }
 
@@ -135,6 +135,32 @@ right: 10px;
     color: #282828;
     margin-top: 7px;
 }
+.sliderimg{
+    height: 350px; /* Adjust this height as per your need */
+    width: 100%;
+    object-fit: contain; /* Ensures the full image is visible without cropping */
+  }
+  .sliderimg img{
+    height: 300px; /* Adjust this height as per your need */
+    width: 100%;
+    object-fit: contain; /* Ensures the full image is visible without cropping */
+
+  }
+  .carousel-indicators button {
+    background-color: red !important; /* Change to your desired color */
+  }
+  
+  .carousel-indicators .active {
+    background-color: blue !important; /* Change active indicator color */
+  }
+  /* Change the color of the previous and next arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #bdcad3; /* Set the color you want (e.g., red) */
+  /* Or if you want a custom icon, you can add a background image here */
+}
+
+
 
 .ekart--product--category,
 .ekart--product--available-colors,
