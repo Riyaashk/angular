@@ -14,9 +14,15 @@ export class ProductListComponent {
 
   ngOnInit(){
 
-    if(this.page == 'helmet'){
-
-    }
+  
+    
+    this.axorfilteredHelmets = this.axorHelmets;
+    this.vegafilteredHelmets = this.vegaHelmets;
+    this.mtfilteredHelmets = this.mtHelmets;
+    this.steelfilteredHelmets = this.steelBirdHelmets;
+    this.nikefilteredShoes = this.nikeShoes;
+    this.adidasfilteredShoes = this.adidasShoes;
+  
   }
 
   ngAfterViewInit(): void {
@@ -26,15 +32,8 @@ export class ProductListComponent {
     }, 2000); // 2000ms = 2 seconds
   }
 
-shoes = [
-
-
-];
 intervalId: any; 
 
-helmets = [
- 
-  ];
   
 page: string = 'helmet'; 
 selectedBrandHelmet: string = 'axor'; 
@@ -43,10 +42,15 @@ searchText: string = '';
 isNoDataFound = false;
 mainMenuItems: string[] = ['Home', 'Products', 'New Arrival', 'Contact']
 isLoading: boolean = false;
+searchQuery: string = '';
+axorfilteredHelmets: any = []; 
+vegafilteredHelmets : any= []; 
+mtfilteredHelmets : any = []; 
+steelfilteredHelmets : any = []; 
+nikefilteredShoes  : any = []; 
+adidasfilteredShoes  : any = []; 
 
 
-filteredProductShoe = this.shoes;
-filteredProductHelmet = this.helmets;
 adidasShoes = [
   {
     id:3,
@@ -200,6 +204,10 @@ nikeShoes = [
     slug:"Nike"
   },
 ]
+// allShoes = [
+//   ...this.adidasShoes,
+//   ...this.nikeShoes
+// ];
 vegaHelmets = [
     
   {
@@ -356,20 +364,16 @@ axorHelmets = [
     slug:"Nike"
   },
 ]
+
+// allHelmets = [
+//   ...this.axorHelmets,
+//   ...this.vegaHelmets,
+//   ...this.mtHelmets,
+//   ...this.steelBirdHelmets
+// ];
 scrollToTop() {
   window.scrollTo(0, 0);
 }
-// closeOffcanvas(): void {
-//   const offcanvasElement = document.getElementById('offcanvasNavbar');
-//   const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
-//   offcanvasInstance.hide(); // Close the offcanvas
-
-//   // Remove backdrop manually
-//   const backdropElement = document.querySelector('.offcanvas-backdrop');
-//   if (backdropElement) {
-//     backdropElement.remove(); // Removes the backdrop completely
-//   }
-// }
 
 closeOffcanvas() {
   // Trigger the click event on the close button manually using jQuery
@@ -380,11 +384,16 @@ closeOffcanvas() {
 
 onPageChange(page) {
   if(page == 'helmet'){
+    this.searchQuery ='';
+    this.onSearchChange();
   this.page = 'helmet';
+
   this.selectedBrandHelmet = 'axor'; 
   this.scrollToTop();
   }
   if(page == 'shoe'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.page = 'shoe';
  this.selectedBrandShoe='nike'; 
     this.scrollToTop();
@@ -401,20 +410,44 @@ nextSlide(): void {
     }
   }
 }
-onSearchTextChange() {
-  if(this.page == 'shoe' ) {
-  this.filteredProductShoe = this.shoes.filter(product =>
-    product.name.toLowerCase().includes(this.searchText.toLowerCase())
-  );
-  this.isNoDataFound = this.filteredProductShoe.length === 0;
-} else{
-  if(this.page == 'helmet' ) {
-  this.filteredProductHelmet = this.helmets.filter(product =>
-    product.name.toLowerCase().includes(this.searchText.toLowerCase())
-  );
-  this.isNoDataFound = this.filteredProductHelmet.length === 0;
+onSearchChange() {
+console.log("this.axorfilteredHelmets", this.axorfilteredHelmets)
+  if (this.selectedBrandHelmet == 'axor') {
+    this.axorfilteredHelmets = this.axorHelmets.filter(helmet =>
+      helmet.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
 }
-}
+
+
+  if (this.selectedBrandHelmet == 'steelBird') {
+    this.steelfilteredHelmets = this.steelBirdHelmets.filter(helmet =>
+      helmet.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
+
+  if (this.selectedBrandHelmet == 'vega') {
+    this.vegafilteredHelmets = this.vegaHelmets.filter(helmet =>
+      helmet.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
+
+  if (this.selectedBrandHelmet == 'mt') {
+    this.mtfilteredHelmets = this.mtHelmets.filter(helmet =>
+      helmet.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
+
+  if (this.selectedBrandShoe == 'nike') {
+    this.nikefilteredShoes = this.nikeShoes.filter(shoes =>
+      shoes.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
+
+  if (this.selectedBrandShoe == 'adidas') {
+    this.adidasfilteredShoes = this.adidasShoes.filter(shoes =>
+      shoes.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
 }
 
 onHelmetSelect(event: any) {
@@ -424,24 +457,33 @@ onHelmetSelect(event: any) {
   setTimeout(() => {
     this.isLoading = false;
   if(selectedValue == 'axor'){
-    this.selectedBrandHelmet = 'axor';
-  }
-    if(selectedValue == 'axor'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandHelmet = 'axor';
   }
   if(selectedValue == 'steelBird'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandHelmet = 'steelBird';
   }
   if(selectedValue == 'vega'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandHelmet = 'vega';
   }
   if(selectedValue == 'mt'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandHelmet = 'mt';
   }
   if(selectedValue == 'nike'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandShoe = 'nike';
   }
   if(selectedValue == 'adidas'){
+    this.searchQuery ='';
+    this.onSearchChange();
     this.selectedBrandShoe = 'adidas';
   }
 }, 1000);
